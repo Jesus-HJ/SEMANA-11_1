@@ -1,0 +1,284 @@
+{% extends 'propiedades/base.html' %}
+{% load static %}
+
+{% block title %}Inicio — InmoAndes | Portal Inmobiliario de Huancayo{% endblock %}
+
+{% block content %}
+<!-- ========================================================================
+     HERO PRINCIPAL (Editorial Real Estate)
+     ======================================================================== -->
+<section class="hero-inmo">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-10 col-xl-9">
+        <span class="hero-pill-tag">
+          <i class="bi bi-geo-alt-fill"></i> Portal Inmobiliario de Huancayo
+        </span>
+        <h1 class="hero-title">
+          Encuentra el lugar ideal para vivir en <span class="text-accent-gold">Huancayo</span>
+        </h1>
+        <p class="hero-subtitle">
+          Explora casas contemporáneas, departamentos céntricos y terrenos con alta plusvalía en El Tambo, San Carlos, Chilca y todo el Valle del Mantaro.
+        </p>
+      </div>
+    </div>
+
+    <!-- Buscador Visual Integrado (Conectado con parámetros GET al Catálogo) -->
+    <div class="row mt-2">
+      <div class="col-12 col-xl-11">
+        <div class="search-card-hero">
+          <form action="{% url 'propiedades:catalogo' %}" method="GET" class="row g-2 align-items-center">
+            
+            <!-- Campo 1: Tipo de Inmueble -->
+            <div class="col-12 col-md-4 search-field-group">
+              <label for="id_tipo" class="search-field-label">
+                <i class="bi bi-house-door me-1 text-primary"></i> Tipo de Propiedad
+              </label>
+              <select name="tipo" id="id_tipo" class="form-select search-field-select">
+                <option value="">Todos los tipos</option>
+                <option value="casa">Casa</option>
+                <option value="departamento">Departamento</option>
+                <option value="terreno">Terreno</option>
+                <option value="local">Local Comercial</option>
+              </select>
+            </div>
+
+            <!-- Campo 2: Ubicación / Distrito -->
+            <div class="col-12 col-md-3 search-field-group">
+              <label for="id_distrito" class="search-field-label">
+                <i class="bi bi-geo-alt me-1 text-danger"></i> Distrito
+              </label>
+              <select name="distrito" id="id_distrito" class="form-select search-field-select">
+                <option value="">Todos los distritos</option>
+                <option value="El Tambo">El Tambo</option>
+                <option value="Huancayo">Huancayo Centro</option>
+                <option value="Chilca">Chilca</option>
+                <option value="Pilcomayo">Pilcomayo</option>
+              </select>
+            </div>
+
+            <!-- Campo 3: Operación -->
+            <div class="col-12 col-md-3 search-field-group">
+              <label for="id_operacion" class="search-field-label">
+                <i class="bi bi-tag me-1 text-success"></i> Modalidad
+              </label>
+              <select name="operacion" id="id_operacion" class="form-select search-field-select">
+                <option value="">Cualquier modalidad</option>
+                <option value="venta">En Venta</option>
+                <option value="alquiler">En Alquiler</option>
+              </select>
+            </div>
+
+            <!-- Botón de Búsqueda -->
+            <div class="col-12 col-md-2 p-1">
+              <button type="submit" class="btn btn-inmo-accent w-100 py-3 d-flex align-items-center justify-content-center gap-2">
+                <i class="bi bi-search"></i> <span>Buscar</span>
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================================
+     EXPLORACIÓN POR CATEGORÍAS
+     ======================================================================== -->
+<section id="categorias" class="py-5">
+  <div class="container py-4">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4">
+      <div>
+        <span class="text-uppercase fw-bold text-muted small letter-spacing">Clasificación Inmobiliaria</span>
+        <h2 class="font-heading mb-1">Explora por Categoría</h2>
+      </div>
+      <p class="text-muted small mb-0 mt-2 mt-md-0">
+        Inmuebles adaptados a tus metas residenciales y comerciales
+      </p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Casas -->
+      <div class="col-6 col-lg-3">
+        <a href="{% url 'propiedades:catalogo' %}?tipo=casa" class="category-card">
+          <div class="category-icon-box">
+            <i class="bi bi-house-door"></i>
+          </div>
+          <h3 class="category-title">Casas</h3>
+          <span class="category-meta">Residenciales y familiares</span>
+        </a>
+      </div>
+
+      <!-- Departamentos -->
+      <div class="col-6 col-lg-3">
+        <a href="{% url 'propiedades:catalogo' %}?tipo=departamento" class="category-card">
+          <div class="category-icon-box">
+            <i class="bi bi-building"></i>
+          </div>
+          <h3 class="category-title">Departamentos</h3>
+          <span class="category-meta">Flats y Dúplex céntricos</span>
+        </a>
+      </div>
+
+      <!-- Terrenos -->
+      <div class="col-6 col-lg-3">
+        <a href="{% url 'propiedades:catalogo' %}?tipo=terreno" class="category-card">
+          <div class="category-icon-box">
+            <i class="bi bi-layers"></i>
+          </div>
+          <h3 class="category-title">Terrenos</h3>
+          <span class="category-meta">Lotes urbanos y campos</span>
+        </a>
+      </div>
+
+      <!-- Locales Comerciales -->
+      <div class="col-6 col-lg-3">
+        <a href="{% url 'propiedades:catalogo' %}?tipo=local" class="category-card">
+          <div class="category-icon-box">
+            <i class="bi bi-shop"></i>
+          </div>
+          <h3 class="category-title">Locales</h3>
+          <span class="category-meta">Oficinas y comercio</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================================
+     PROPIEDADES DESTACADAS (Renderizado con ORM / Empty State Inicial)
+     ======================================================================== -->
+<section class="py-5 bg-white border-top border-bottom">
+  <div class="container py-4">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4">
+      <div>
+        <span class="text-uppercase fw-bold text-muted small letter-spacing">Selección Exclusiva</span>
+        <h2 class="font-heading mb-1">Propiedades Destacadas</h2>
+      </div>
+      <a href="{% url 'propiedades:catalogo' %}" class="btn btn-inmo-outline mt-3 mt-md-0">
+        Ver catálogo completo <i class="bi bi-arrow-right ms-1"></i>
+      </a>
+    </div>
+
+    <!-- Iteración DTL sobre QuerySet -->
+    <div class="row g-4">
+      {% for producto in propiedades_destacadas %}
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+          <div class="position-relative">
+            <img src="{{ producto.imagen_url }}" class="card-img-top object-fit-cover" style="height: 240px;" alt="{{ producto.titulo }}">
+            <span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill {% if producto.operacion == 'venta' %}bg-primary{% else %}bg-warning text-dark{% endif %}">
+              {{ producto.operacion|title }}
+            </span>
+          </div>
+          <div class="card-body p-4">
+            <div class="text-primary fw-bold fs-4 mb-1">
+              S/ {{ producto.precio|floatformat:2 }}
+            </div>
+            <h5 class="card-title font-heading mb-2">{{ producto.titulo|title }}</h5>
+            <p class="text-muted small mb-3">
+              <i class="bi bi-geo-alt me-1 text-danger"></i> {{ producto.distrito }}
+            </p>
+            <div class="d-flex justify-content-between text-muted small pt-3 border-top">
+              <span><i class="bi bi-arrows-fullscreen me-1 text-primary"></i> {{ producto.area_m2 }} m²</span>
+              {% if producto.dormitorios %}
+              <span><i class="bi bi-door-closed me-1 text-primary"></i> {{ producto.dormitorios }} Hab</span>
+              {% endif %}
+              <span><i class="bi bi-calendar3 me-1"></i> {{ producto.fecha_publicacion|date:"d M, Y" }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <!-- Estado inicial mientras se crea el modelo Producto en la Fase 3 -->
+      <div class="col-12">
+        <div class="p-5 text-center bg-light rounded-4 border">
+          <div class="d-inline-flex p-3 rounded-circle bg-white text-primary mb-3 shadow-sm fs-2">
+            <i class="bi bi-houses"></i>
+          </div>
+          <h4 class="font-heading">La base de datos inmobiliaria se conectará en el Paso 5</h4>
+          <p class="text-muted mx-auto" style="max-width: 580px;">
+            La arquitectura de plantillas está lista y enlazada. En la <strong>Fase 3</strong> poblaremos el modelo <code>Producto</code> en SQLite mediante consultas del ORM de Django.
+          </p>
+          <a href="{% url 'propiedades:catalogo' %}" class="btn btn-inmo-primary mt-2">
+            <i class="bi bi-search me-1"></i> Explorar vista de Catálogo
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================================
+     SECCIÓN SOBRE INMOANDES (Enfoque Local Huancayo)
+     ======================================================================== -->
+<section id="nosotros" class="py-5">
+  <div class="container py-4">
+    <div class="about-banner">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <span class="text-uppercase fw-bold text-muted small letter-spacing">Confianza y Transparencia</span>
+          <h2 class="font-heading mb-3">Comprometidos con el desarrollo urbano de Huancayo</h2>
+          <p class="text-muted mb-4">
+            InmoAndes nace con el propósito de ordenar y modernizar la oferta inmobiliaria en el Valle del Mantaro. Brindamos un punto de encuentro confiable entre propietarios e interesados, priorizando la claridad documental, la precisión de la ubicación y el valor real del mercado regional.
+          </p>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="about-feature-item">
+                <div class="about-feature-icon">
+                  <i class="bi bi-shield-check"></i>
+                </div>
+                <div>
+                  <h6 class="font-heading mb-1">Información Clara</h6>
+                  <p class="text-muted small mb-0">Precios transparentes y especificaciones reales de cada inmueble.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="about-feature-item">
+                <div class="about-feature-icon">
+                  <i class="bi bi-pin-map"></i>
+                </div>
+                <div>
+                  <h6 class="font-heading mb-1">Ubicación Estratégica</h6>
+                  <p class="text-muted small mb-0">Cobertura focalizada en Huancayo, El Tambo, San Carlos y Chilca.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5 text-center">
+          <div class="position-relative p-2">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" 
+                 alt="Arquitectura moderna en InmoAndes" 
+                 class="img-fluid rounded-4 shadow-lg object-fit-cover"
+                 style="max-height: 380px; width: 100%;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================================
+     LLAMADA A LA ACCIÓN FINAL (CTA)
+     ======================================================================== -->
+<section class="py-5 bg-white border-top">
+  <div class="container text-center py-4">
+    <span class="text-uppercase fw-bold text-muted small letter-spacing">¿Listo para dar el siguiente paso?</span>
+    <h2 class="font-heading mb-3 mt-1">Explora nuestro catálogo inmobiliario disponible</h2>
+    <p class="text-muted mx-auto mb-4" style="max-width: 580px;">
+      Revisa la oferta completa de departamentos, casas y terrenos disponibles en venta o alquiler en Huancayo.
+    </p>
+    <a href="{% url 'propiedades:catalogo' %}" class="btn btn-inmo-primary px-4 py-3 fs-6">
+      <i class="bi bi-grid-3x3-gap me-2"></i> Ver todas las propiedades
+    </a>
+  </div>
+</section>
+{% endblock %}
+

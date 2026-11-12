@@ -1,0 +1,463 @@
+/* ==========================================================================
+   INMOANDES — SISTEMA DE DISEÑO FRONTEND
+   Identidad visual: Arquitectura contemporánea, confianza y calidez regional
+   ========================================================================== */
+
+:root {
+  /* Paleta Cromática */
+  --color-primary: #123B46;          /* Azul Petróleo Principal */
+  --color-primary-dark: #102B35;     /* Azul Profundo para contrastes y footer */
+  --color-primary-light: #1A5160;    /* Variación sutil */
+  --color-accent: #C4A574;           /* Dorado Suave para acentos */
+  --color-accent-hover: #B3925F;     /* Hover de acento */
+  --color-accent-subtle: #F8F4EC;    /* Fondo suave para badges dorados */
+  --color-bg-light: #FAF9F6;         /* Blanco Cálido - Base de la web */
+  --color-surface: #FFFFFF;          /* Blanco Puro para tarjetas y contenedores */
+  --color-surface-subtle: #F3F0E9;   /* Marfil para secciones alternas */
+  --color-text-main: #1D252C;        /* Texto principal de alto contraste */
+  --color-text-muted: #536168;       /* Gris tipográfico para subtítulos y metadatos */
+  --color-border: #E5E8E8;           /* Gris sutil para bordes y divisores */
+
+  /* Tipografías */
+  --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Sombras y Elevaciones */
+  --shadow-subtle: 0 4px 20px rgba(16, 43, 53, 0.05);
+  --shadow-card: 0 10px 30px rgba(16, 43, 53, 0.08);
+  --shadow-hover: 0 18px 40px rgba(16, 43, 53, 0.14);
+
+  /* Radios de curvatura */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  /* Transiciones */
+  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   Estilos Base y Tipografía
+   ========================================================================== */
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-main);
+  background-color: var(--color-bg-light);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6,
+.font-heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+/* ==========================================================================
+   Navbar Profesional
+   ========================================================================== */
+.navbar-inmoandes {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  padding: 1rem 0;
+  transition: var(--transition);
+}
+
+.navbar-brand-inmo {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--color-primary-dark) !important;
+  letter-spacing: -0.03em;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.navbar-brand-inmo .brand-badge {
+  background: var(--color-primary);
+  color: var(--color-accent);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 10px rgba(18, 59, 70, 0.25);
+}
+
+.nav-link-inmo {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--color-text-muted) !important;
+  padding: 0.5rem 1rem !important;
+  position: relative;
+  transition: var(--transition);
+}
+
+.nav-link-inmo:hover,
+.nav-link-inmo.active {
+  color: var(--color-primary) !important;
+}
+
+.nav-link-inmo.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 1rem;
+  right: 1rem;
+  height: 2px;
+  background-color: var(--color-accent);
+  border-radius: 2px;
+}
+
+/* Botones con estilo InmoAndes */
+.btn-inmo-primary {
+  background-color: var(--color-primary);
+  color: #FFFFFF !important;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  transition: var(--transition);
+  box-shadow: 0 4px 14px rgba(18, 59, 70, 0.2);
+}
+
+.btn-inmo-primary:hover {
+  background-color: var(--color-primary-dark);
+  color: var(--color-accent) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(18, 59, 70, 0.28);
+}
+
+.btn-inmo-accent {
+  background-color: var(--color-accent);
+  color: #FFFFFF !important;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  transition: var(--transition);
+}
+
+.btn-inmo-accent:hover {
+  background-color: var(--color-accent-hover);
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+}
+
+.btn-inmo-outline {
+  background-color: transparent;
+  color: var(--color-primary) !important;
+  border: 1.5px solid var(--color-primary);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  padding: 0.6rem 1.3rem;
+  border-radius: var(--radius-pill);
+  transition: var(--transition);
+}
+
+.btn-inmo-outline:hover {
+  background-color: var(--color-primary);
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Hero Section (Editorial Real Estate)
+   ========================================================================== */
+.hero-inmo {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(16, 43, 53, 0.82) 0%, rgba(18, 59, 70, 0.68) 100%),
+              url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+  color: #FFFFFF;
+  padding: 6rem 0 5rem 0;
+}
+
+.hero-pill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hero-title {
+  font-size: clamp(2.3rem, 5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #FFFFFF;
+  margin-bottom: 1.25rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-title .text-accent-gold {
+  color: var(--color-accent);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 620px;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+/* Buscador Integrado (Floating Search Card) */
+.search-card-hero {
+  background: #FFFFFF;
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: 0 20px 45px rgba(16, 43, 53, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.search-field-group {
+  padding: 0.35rem 0.75rem;
+  border-right: 1px solid var(--color-border);
+}
+
+.search-field-group:last-child {
+  border-right: none;
+}
+
+.search-field-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.search-field-select {
+  border: none;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-primary-dark);
+  padding: 0;
+  background-color: transparent;
+  width: 100%;
+}
+
+.search-field-select:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   Sección Categorías
+   ========================================================================== */
+.category-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: var(--transition);
+  display: block;
+  color: inherit;
+  box-shadow: var(--shadow-subtle);
+}
+
+.category-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-card);
+  color: inherit;
+}
+
+.category-icon-box {
+  width: 64px;
+  height: 64px;
+  background: var(--color-accent-subtle);
+  color: var(--color-primary);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin: 0 auto 1.2rem auto;
+  transition: var(--transition);
+}
+
+.category-card:hover .category-icon-box {
+  background: var(--color-primary);
+  color: var(--color-accent);
+}
+
+.category-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.category-meta {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   Sección Institucional y Destacados
+   ========================================================================== */
+.about-banner {
+  background: var(--color-surface-subtle);
+  border-radius: var(--radius-lg);
+  padding: 3.5rem 3rem;
+  border: 1px solid var(--color-border);
+}
+
+.about-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.about-feature-icon {
+  width: 40px;
+  height: 40px;
+  background: #FFFFFF;
+  color: var(--color-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow-subtle);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Footer Profesional
+   ========================================================================== */
+.footer-inmo {
+  background-color: var(--color-primary-dark);
+  color: #FFFFFF;
+  padding: 4.5rem 0 2rem 0;
+  border-top: 3px solid var(--color-accent);
+}
+
+.footer-brand {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 1rem;
+}
+
+.footer-brand span {
+  color: var(--color-accent);
+}
+
+.footer-text {
+  color: #A0B2B8;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.footer-title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.65rem;
+}
+
+.footer-links a {
+  color: #A0B2B8;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--color-accent);
+  padding-left: 4px;
+}
+
+.footer-bottom {
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  color: #7D9299;
+}
+
+/* ==========================================================================
+   Responsividad y Media Queries
+   ========================================================================== */
+@media (max-width: 991.98px) {
+  .hero-inmo {
+    padding: 5rem 0 4rem 0;
+    min-height: auto;
+  }
+  .search-field-group {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.65rem 0;
+  }
+  .search-field-group:last-child {
+    border-bottom: none;
+  }
+  .about-banner {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
